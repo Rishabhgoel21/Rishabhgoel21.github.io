@@ -1,114 +1,26 @@
-var numSquares = 6;
-var colors = [];
-var pickedColor;
-var squares = document.querySelectorAll(".square");
-var colorDisplay = document.getElementById("colorDisplay");
-var messageDisplay = document.querySelector("#message");
-var h1 = document.querySelector("h1");
-var resetButton = document.querySelector("#reset");
-var modeButtons = document.querySelectorAll(".mode");
-
-//initial function
-init();
-
-function init(){
-	setupModeButtons();
-	setupSquares();
-	reset();
-}
-
-function setupModeButtons(){
-	for(var i = 0; i < modeButtons.length; i++){
-		modeButtons[i].addEventListener("click", function(){
-			modeButtons[0].classList.remove("selected");
-			modeButtons[1].classList.remove("selected");
-			this.classList.add("selected");
-			this.textContent === "Easy" ? numSquares = 3: numSquares = 6;
-			reset();
-		});
-	}
-}
-
-function setupSquares(){
-	for(var i = 0; i < squares.length; i++){
-	//add click listeners to squares
-		squares[i].addEventListener("click", function(){
-			//grab color of clicked square
-			var clickedColor = this.style.backgroundColor;
-			//compare color to pickedColor
-			if(clickedColor === pickedColor){
-				messageDisplay.textContent = "Correct!";
-				resetButton.textContent = "Play Again?"
-				changeColors(clickedColor);
-				h1.style.backgroundColor = clickedColor;
-			} else {
-				this.style.backgroundColor = "#232323";
-				messageDisplay.textContent = "Try Again"
-			}
-		});
-	}
-}
-
-function reset(){
-	colors = generateRandomColors(numSquares);
-	//pick a new random color from array
-	pickedColor = pickColor();
-	//change colorDisplay to match picked Color
-	colorDisplay.textContent = pickedColor;
-	resetButton.textContent = "New Colors"
-	messageDisplay.textContent = "";
-	//change colors of squares
-	for(var i = 0; i < squares.length; i++){
-		if(colors[i]){
-			squares[i].style.display = "block"
-			squares[i].style.backgroundColor = colors[i];
-		} else {
-			squares[i].style.display = "none";
-		}
-	}
-	h1.style.backgroundColor = "steelblue";
-}
-
-resetButton.addEventListener("click", function(){
-	reset();
-})
-
-// it changes the color of the squares
-function changeColors(color){
-	//loop through all squares
-	for(var i = 0; i < squares.length; i++){
-		//change each color to match given color
-		squares[i].style.backgroundColor = color;
-	}
-}
-
-// it pick the color to be guessed
-function pickColor(){
-	var random = Math.floor(Math.random() * colors.length);
-	return colors[random];
-}
-
-//it makes array for holding 6 rgb strings
-function generateRandomColors(num){
-	//make an array
-	var arr = []
-	//repeat num times
-	for(var i = 0; i < num; i++){
-		//get random color and push into arr
-		arr.push(randomColor())
-	}
-	//return that array
-	return arr;
-}
-
-//to pick 3 random numbers from 0-255
-function randomColor(){
-	//pick a "red" from 0 - 255
-	var r = Math.floor(Math.random() * 256);		//Math.Random- between [0,1)
-	//pick a "green" from  0 -255
-	var g = Math.floor(Math.random() * 256);		//math.floor - takes to nearest integer
-	//pick a "blue" from  0 -255
-	var b = Math.floor(Math.random() * 256);
-	return "rgb(" + r + ", " + g + ", " + b + ")";
-}
-
+$(document).ready(function() {
+	$(".title").lettering();
+	$(".button").lettering();
+  });
+  
+  
+  
+  
+  
+  $(document).ready(function() {
+	animation();
+  }, 1000);
+  
+  $('.button').click(function() {
+	animation();
+  });
+  
+  
+  function animation() {
+	var title1 = new TimelineMax();
+	title1.to(".button", 0, {visibility: 'hidden', opacity: 0})
+	title1.staggerFromTo(".title span", 0.5, 
+	{ease: Back.easeOut.config(1.7), opacity: 0, bottom: -80},
+	{ease: Back.easeOut.config(1.7), opacity: 1, bottom: 0}, 0.05);
+	title1.to(".button", 0.2, {visibility: 'visible' ,opacity: 1})
+  }

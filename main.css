@@ -1,82 +1,73 @@
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+html {
+  height: 100%;
+}
+
 body {
-	background-color: #232323;
-	margin: 0;
-	font-family: "Montserrat", "Avenir";
+  font-family: 'Fjalla One', sans-serif;
+  background: linear-gradient(to bottom, #405166 0%, #656f6f 100%);
 }
 
-.square {
-	width: 30%;
-	background-Color: purple;
-	padding-bottom: 30%;
-	float: left;
-	margin: 1.66%;
-	border-radius: 15%;
-	/* animation time when easy button is pressed */
-	/* all browser didn't support transition syntax */
-	/* webkit transition used in safari */
-	/* moz transition used in firefox */
-	transition: background 0.6s;
-	-webkit-transition: background 0.6s;
-	-moz-transition: background 0.6s;
+.container {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  display: block;
+  position: absolute;
+  max-width: 225px;
 }
 
-#container {
-	margin: 20px auto;
-	max-width: 600px;
+.button {
+  float: left;
+  position: relative;
+  bottom: -65px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-10deg);
+  color: #e55643;
+  text-transform: uppercase;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+}
+.button span {
+  transform: skew(-10deg);
+  display: block;
+  float: left;
+  text-shadow: #533d4a 1px 1px, #533d4a 2px 2px, #533d4a 3px 3px, #533d4a 4px 4px;
 }
 
 h1 {
-	text-align: center;
-	line-height: 1.1;
-	font-weight: normal;
-	color: white;
-	background-color: steelblue;
-	margin: 0;
-	text-transform: uppercase;
-	padding: 20px 0;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 42px;
+  margin: 0;
+  line-height: 47px;
+  letter-spacing: 2px;
 }
 
-#colorDisplay {
-	font-size: 200%;
+.title {
+  transform: translateX(-50%) rotate(-10deg);
+  display: block;
+  float: left;
+  left: 50%;
+  position: relative;
+}
+.title span {
+  transform: skew(-10deg);
+  display: block;
+  float: left;
+  text-shadow: #533d4a 1px 1px, #533d4a 2px 2px, #533d4a 3px 3px, #533d4a 4px 4px, #533d4a 5px 5px, #533d4a 6px 6px;
+  min-width: 10px;
+  min-height: 10px;
+  position: relative;
 }
 
-#message {
-	display: inline-block;
-	width: 20%;
+.title:nth-child(1) {
+  color: #e55643;
 }
-
-#stripe {
-	background-color: white;
-	height: 30px;
-	text-align: center;
-	color: black;
+.title:nth-child(2) {
+  color: #2b9f5e;
 }
-
-.selected {
-	color: white;
-	background-color: steelblue;
-}
-
-button {
-	border: none;
-	background-color: none;
-	text-transform: uppercase;
-	height: 100%;
-	font-weight: 700;
-	color: steelblue;
-	letter-spacing: 1px;
-	font-size: inherit;
-	/* animation time when easy button is pressed */
-	/* all browser didn't support transition syntax */
-	/* webkit transition used in safari */
-	/* moz transition used in firefox */
-	transition: all 0.3s;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	outline: none;
-}
-
-button:hover {
-	color: white;
-	background-color: steelblue;
+.title:nth-child(3) {
+  color: #f1c83c;
 }
